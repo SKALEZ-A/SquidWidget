@@ -1,28 +1,10 @@
 
-"use client";
-import Image from "next/image";
-import { useState, useEffect, Suspense } from "react";
+"use client"
 import { SquidWidget } from "@0xsquid/widget";
 
-export default function Home() {
-  const [showWidget, setShowWidget] = useState(false);
-
-  useEffect(() => {
-    // Delay the rendering of the SquidWidget
-    // to allow the main page content to load first
-    const timer = setTimeout(() => {
-      setShowWidget(true);
-    }, 2000); // Adjust the delay as needed
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>THIS IS THE DEX AGGREGATOR APP</h1>
-      {showWidget && (
-        <Suspense fallback={<div>Loading...</div>}>
-         <SquidWidget config={
+const SquidModal = () => {
+    <>
+<SquidWidget config={
 {
     "integratorId": "marble-protocol-354e844c-17aa-4dca-abfe-45b032bfa636",
     "companyName": "Custom",
@@ -74,8 +56,7 @@ export default function Home() {
     ]
 }
 } />
-        </Suspense>
-      )}
-    </main>
-  );
+    </>
 }
+
+export default SquidModal
